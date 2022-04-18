@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="@drawable/round_item_white">
+    <ImageView
+        android:id="@+id/ivStoreImage"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="35"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="65"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:gravity="center_vertical"
+            android:text="Pizza Domino"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary_color"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/tvStoreFoods"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:text="Pizza Xúc Xích, Pizza Hải Sản, Pizza Bò, Pizza 7 màu, Pizza xì ke,..."
+            android:textSize="16sp"
+            android:textColor="@color/gray"/>
+    </LinearLayout>
+</LinearLayout>
