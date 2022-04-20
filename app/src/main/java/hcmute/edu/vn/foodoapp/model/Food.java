@@ -1,18 +1,31 @@
 package hcmute.edu.vn.foodoapp.model;
 
 public class Food {
+    private Integer id;
     private int image;
     private String name;
     private String type;
     private String description;
     private int price;
+    private Integer storeId;
 
-    public Food(int image, String name, String type, String description, int price) {
+    public Food(Integer id, int image, String name, String type, String description, int price,
+                Integer storeId) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.type = type;
         this.description = description;
         this.price = price;
+        this.storeId = storeId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getImage() {
@@ -53,6 +66,14 @@ public class Food {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
     public String getMoneyDisplay() {
