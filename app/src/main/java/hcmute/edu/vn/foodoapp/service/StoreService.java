@@ -22,6 +22,7 @@ public class StoreService {
         }
         return result;
     }
+
     public Store getOne(Context context, Integer id) {
         SQLiteDatabase db = DatabaseHelper.getInstance(context).getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from stores where id="+id, null);
@@ -31,6 +32,7 @@ public class StoreService {
         }
         return null;
     }
+
     public List<Food> getFoodsFromStore(Context context, Integer storeId) {
         List<Food> result = new ArrayList<>();
         SQLiteDatabase db = DatabaseHelper.getInstance(context).getReadableDatabase();
