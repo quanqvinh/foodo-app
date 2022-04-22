@@ -1,16 +1,17 @@
 package hcmute.edu.vn.foodoapp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
+    private Integer id;
     private int image;
     private String name;
-    private List<Food> foods;
     private String openAt, closeAt;
     private String description;
+    private List<Food> foods;
 
-    public Store(int image, String name, List<Food> foods, String openAt, String closeAt, String description) {
+    public Store(Integer id, int image, String name, String openAt, String closeAt, String description, List<Food> foods) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.foods = foods;
@@ -18,14 +19,21 @@ public class Store {
         this.closeAt = closeAt;
         this.description = description;
     }
-
-    public Store(int image, String name, String openAt, String closeAt, String description) {
+    public Store(Integer id, int image, String name, String openAt, String closeAt, String description) {
+        this.id = id;
         this.image = image;
         this.name = name;
-        foods = new ArrayList<Food>();
         this.openAt = openAt;
         this.closeAt = closeAt;
         this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getImage() {
@@ -80,8 +88,8 @@ public class Store {
         this.foods.add(food);
     }
 
-    public void addFood(int image, String name, String type, String description, int price) {
-        this.foods.add(new Food(image, name, type, description, price));
+    public void addFood(Integer id, int image, String name, String type, String description, int price, Integer storeId) {
+        this.foods.add(new Food(id, image, name, type, description, price, storeId));
     }
 
     public String getListFoods() {
