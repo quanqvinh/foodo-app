@@ -4,8 +4,8 @@ public class BillDetails {
     private Integer id;
     private Integer foodId;
     private Integer billId;
-    private int amount;
-    private int price;
+    private Integer amount;
+    private Integer price;
 
     public BillDetails(Integer id, Integer foodId, Integer billId, int amount, int price) {
         this.id = id;

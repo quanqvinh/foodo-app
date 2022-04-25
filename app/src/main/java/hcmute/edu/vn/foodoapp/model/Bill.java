@@ -16,6 +16,13 @@ public class Bill {
         this.createdAt = createdAt;
     }
 
+    public Bill(Integer id, Integer userId, String createdAt, List<BillDetails> details) {
+        this.id = id;
+        this.userId = userId;
+        this.createdAt = createdAt;
+        this.details = details;
+    }
+
     public Integer getId() {
         return id;
     }

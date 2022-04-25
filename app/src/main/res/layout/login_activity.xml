@@ -32,7 +32,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"/>
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <LinearLayout
         android:id="@+id/login_form"
@@ -48,13 +48,13 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/hint_color"
             android:fontFamily="@font/nunito_sans_bold"
-            android:hint="Email"
+            android:hint="Username"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_color"
