@@ -19,6 +19,17 @@ public class UserService {
         cursor.close();
         return -1;
     }
+    public User getOne(int userId) {
+        db = DatabaseHelper.getInstance().getReadableDatabase();
+        Cursor cursor = db.rawQuery("select username, password, address, phone " +
+                "from users where id="+userId, null);
+        if (cursor.moveToNext()){
+            return new User(userId, cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3));
+        }
+        cursor.close();
+        return null;
+    }
     public void insert(User user) {
         db = DatabaseHelper.getInstance().getWritableDatabase();
         Object[] bindArgs = {user.getUsername(), user.getPassword(), user.getAddress(), user.getPhone()};

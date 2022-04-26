@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import hcmute.edu.vn.foodoapp.R;
+import hcmute.edu.vn.foodoapp.activity.MainActivity;
+import hcmute.edu.vn.foodoapp.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +60,25 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+     EditText etUsername, etPassword, etAddress, etPhone;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        final User user = MainActivity.userService.getOne(MainActivity.userId);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        etUsername = view.findViewById(R.id.etUsernameProfile);
+        etUsername.setText(user.getUsername());
+        etPassword = view.findViewById(R.id.etPasswordProfile);
+        etPassword.setText(user.getPassword());
+        etAddress = view.findViewById(R.id.etAddressProfile);
+        etAddress.setText(user.getAddress());
+        etPhone = view.findViewById(R.id.etPhoneProfile);
+        etPhone.setText(user.getPhone());
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+//        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return view;
     }
 }
