@@ -7,6 +7,8 @@ public class BillDetails {
     private Integer amount;
     private Integer price;
 
+    private Food food;
+
     public BillDetails(Integer id, Integer foodId, Integer billId, int amount, int price) {
         this.id = id;
         this.foodId = foodId;
@@ -53,4 +55,22 @@ public class BillDetails {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+
 }

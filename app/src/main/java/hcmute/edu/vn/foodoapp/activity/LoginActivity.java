@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     MaterialButton btnLogin;
     UserService userService;
     EditText etUsername, etPassword;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @SuppressLint("Range")
     @Override
@@ -68,7 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         userService = new UserService();
-        if (userService.isAuthenticated(username, password)){
+        int userId = userService.authenticate(username, password);
+        if (userId > -1){
             Intent intent = new Intent(this.getApplicationContext(), HomeActivity.class);
             startActivity(intent);
         }else {
@@ -82,30 +84,41 @@ public class LoginActivity extends AppCompatActivity {
     private void createData(){
         SQLiteDatabase db = DatabaseHelper.getInstance().getWritableDatabase();
 
-        // User
-//        UserService userService = new UserService();
-//        User user = new User(null, "luuAG", "12345678", "Ở đâu đó", "0823832343");
-//        userService.insert(user);
+//         User
+        UserService userService = new UserService();
+        User user = new User(null, "luuAG", "12345678", "Ở đâu đó", "0823832343");
+        userService.insert(user);
 
-        // Store
-//        StoreService storeService = new StoreService();
-//        Store store = new Store(null, R.drawable.store1, "KFC", "7:00AM", "22:00PM","Ngon hơn người yêu cũ của bạn");
-//        storeService.insert(store);
+//         Store
+        StoreService storeService = new StoreService();
+        Store kfc = new Store(null, R.drawable.store1, "KFC", "7:00AM", "22:00PM","Ngon hơn người yêu cũ của bạn");
+        Store domino = new Store(null, R.drawable.store2, "Domino", "7:00AM", "22:00PM","Ăn là ghiền");
+        storeService.insert(kfc);
+        storeService.insert(domino);
 
-        // Food cho KFC
-//        FoodService foodService = new FoodService();
-//        Food f1 = new Food(null, R.drawable.food1, "Gà rán 1", "Đồ ăn nhanh", "1 đùi hoặc miếng gà rán", 32000, 1);
-//        Food f2 = new Food(null, R.drawable.food2, "Combo 1", "Đồ ăn nhanh", "1 đùi gà, 1 khoai tây chiên, 1 nước", 45000, 1);
-//        foodService.insert(f1);
-//        foodService.insert(f2);
+//         Food cho KFC
+        FoodService foodService = new FoodService();
+        Food f1 = new Food(null, R.drawable.food1, "Gà rán 1", "Đồ ăn nhanh", "1 đùi hoặc miếng gà rán", 32000, 1);
+        Food f2 = new Food(null, R.drawable.food2, "Combo 1", "Đồ ăn nhanh", "1 đùi gà, 1 khoai tây chiên, 1 nước", 45000, 1);
+        foodService.insert(f1);
+        foodService.insert(f2);
 
-        // Bill
-//        BillService billService = new BillService();
-//        Bill bill = new Bill(null, 1, "4:12PM 4/24/2022");
-//        BillDetails d1 = new BillDetails(null, 1, null, 1, 1 * foodService.getFoodPrice(1));
-//        BillDetails d2 = new BillDetails(null, 2, null, 1, 1 * foodService.getFoodPrice(2));
-//        bill.setDetails(List.of(d1, d2));
-//        billService.insertBillWithDetails(bill);
+//         Bill
+        BillService billService = new BillService();
+
+        Bill bill = new Bill(null, 1, "4:12PM 4/24/2022", 1, null);
+
+        BillDetails d1 = new BillDetails(null, 1, null, 1, 0);
+        d1.setFood(foodService.getOne(1));
+        d1.setPrice(billService.calculateBillDetailsPrice(d1));
+        BillDetails d2 = new BillDetails(null, 2, null, 1, 0);
+        d1.setFood(foodService.getOne(2));
+        d1.setPrice(billService.calculateBillDetailsPrice(d1));
+
+        bill.setDetails(List.of(d1, d2));
+
+        bill.setTotalPrice(billService.calculateBillTotalPrice(bill));
+        billService.insertBillWithDetails(bill);
         db.close();
     }
 }

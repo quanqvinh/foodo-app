@@ -9,15 +9,15 @@ import hcmute.edu.vn.foodoapp.model.User;
 
 public class UserService {
     SQLiteDatabase db;
-    public boolean isAuthenticated(String username, String password) {
+    public int authenticate(String username, String password) {
         db = DatabaseHelper.getInstance().getReadableDatabase();
         String[] selectionArgs = {username, password};
         Cursor cursor = db.rawQuery("select id from users where username=? and password=?", selectionArgs);
         if (cursor.moveToNext()){
-            return  true;
+            return cursor.getInt(0);
         }
         cursor.close();
-        return false;
+        return -1;
     }
     public void insert(User user) {
         db = DatabaseHelper.getInstance().getWritableDatabase();
