@@ -76,7 +76,7 @@ public class Food {
         this.storeId = storeId;
     }
 
-    public String getMoneyDisplay() {
+    public String getPriceWithMoneyFormat() {
         String s = this.price + "";
         String result = " đ";
         int i;

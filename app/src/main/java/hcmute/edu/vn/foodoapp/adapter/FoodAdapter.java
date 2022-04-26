@@ -47,7 +47,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         ivFoodImage.setImageResource(food.getImage());
         tvFoodName.setText(food.getName());
         tvDescription.setText(food.getDescription());
-        tvPrice.setText(food.getMoneyDisplay());
+        tvPrice.setText(food.getPriceWithMoneyFormat());
 
         return convertView;
     }
