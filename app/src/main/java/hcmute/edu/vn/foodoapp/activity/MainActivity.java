@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     final public static StoreService storeService = new StoreService();
     final public static UserService userService = new UserService();
     public static int userId;
+
+
 
     ViewPager vpMain;
     TabLayout tlNavigation;
