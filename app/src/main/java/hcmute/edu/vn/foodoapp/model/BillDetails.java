@@ -56,6 +56,17 @@ public class BillDetails {
         this.price = price;
     }
 
+    public String getPriceWithMoneyFormat() {
+        String s = this.price + "";
+        String result = " đ";
+        int i;
+        for (i = s.length() - 3; i > 0; i -= 3)
+            result = "." + s.substring(i, i + 3) + result;
+        if (i < 0)
+            result = s.substring(0, i + 3) + result;
+        return result.charAt(0) == '.' ? result.substring(1) : result;
+    }
+
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
@@ -71,6 +82,5 @@ public class BillDetails {
     public void setFood(Food food) {
         this.food = food;
     }
-
 
 }

@@ -20,7 +20,7 @@ public class BillService {
         FoodService foodService;
         db = DatabaseHelper.getInstance().getReadableDatabase();
         Cursor cursor = db.rawQuery("select bd.id, bd.foodId, bd.billId, bd.amount, bd.price from bill_details bd " +
-                "join bills b on bd.id = b.detailsId " +
+                "join bills b on bd.billId = b.id " +
                 "where b.id = " + billId, null);
         while (cursor.moveToNext()){
             BillDetails aDetails = new BillDetails(cursor.getInt(0), cursor.getInt(1),

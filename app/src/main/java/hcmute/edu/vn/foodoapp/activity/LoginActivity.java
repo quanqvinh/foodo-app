@@ -18,7 +18,6 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
-import hcmute.edu.vn.foodoapp.MyApplication;
 import hcmute.edu.vn.foodoapp.R;
 import hcmute.edu.vn.foodoapp.database.DatabaseHelper;
 import hcmute.edu.vn.foodoapp.model.Bill;
@@ -32,6 +31,8 @@ import hcmute.edu.vn.foodoapp.service.StoreService;
 import hcmute.edu.vn.foodoapp.service.UserService;
 
 public class LoginActivity extends AppCompatActivity {
+    final public static String USERID_AUTHENTICATED_MESSAGE = "a Vinh cho em xin gui UserId";
+
     MaterialButton btnLogin;
     UserService userService;
     EditText etUsername, etPassword;
@@ -71,9 +72,11 @@ public class LoginActivity extends AppCompatActivity {
         userService = new UserService();
         int userId = userService.authenticate(username, password);
         if (userId > -1){
-            Intent intent = new Intent(this.getApplicationContext(), HomeActivity.class);
+            Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
+            intent.putExtra(USERID_AUTHENTICATED_MESSAGE, userId);
             startActivity(intent);
-        }else {
+        }
+        else {
             Toast.makeText(this.getApplicationContext(), "Tài khoản hoặc mật khẩu không đúng!"
                     , Toast.LENGTH_SHORT).show();
             return;
