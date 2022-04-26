@@ -86,6 +86,8 @@ public class BillService {
         ContentValues values = new ContentValues();
         values.put("userId", bill.getUserId());
         values.put("createdAt", bill.getCreatedAt());
+        values.put("storeId", bill.getStoreId());
+        values.put("totalPrice", bill.getTotalPrice());
         return db.insert("bills", null, values);
     }
 

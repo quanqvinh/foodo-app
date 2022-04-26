@@ -112,8 +112,8 @@ public class LoginActivity extends AppCompatActivity {
         d1.setFood(foodService.getOne(1));
         d1.setPrice(billService.calculateBillDetailsPrice(d1));
         BillDetails d2 = new BillDetails(null, 2, null, 1, 0);
-        d1.setFood(foodService.getOne(2));
-        d1.setPrice(billService.calculateBillDetailsPrice(d1));
+        d2.setFood(foodService.getOne(2));
+        d2.setPrice(billService.calculateBillDetailsPrice(d2));
 
         bill.setDetails(List.of(d1, d2));
 
