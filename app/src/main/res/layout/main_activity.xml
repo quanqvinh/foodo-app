@@ -19,8 +19,7 @@
         android:layout_height="60dp"
         android:background="@color/white"
         app:tabTextAppearance="@style/MainTabLayoutText"
-        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorColor="@android:color/holo_red_dark"
         app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@android:color/holo_green_dark"/>
-
+        app:tabSelectedTextColor="@android:color/holo_red_dark"/>
 </LinearLayout>

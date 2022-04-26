@@ -16,9 +16,6 @@ import java.util.List;
 
 import hcmute.edu.vn.foodoapp.model.Bill;
 import hcmute.edu.vn.foodoapp.model.BillDetails;
-import hcmute.edu.vn.foodoapp.service.BillService;
-import hcmute.edu.vn.foodoapp.service.FoodService;
-import hcmute.edu.vn.foodoapp.service.StoreService;
 
 public class BillHistoryAdapter extends ArrayAdapter<Bill> {
 
@@ -47,7 +44,6 @@ public class BillHistoryAdapter extends ArrayAdapter<Bill> {
         TextView tvTotalPrice = convertView.findViewById(R.id.tvTotalPrice);
         TextView tvBillDetail = convertView.findViewById(R.id.tvBillDetail);
 
-        StoreService storeService = new StoreService();
 
         tvCreatedTime.setText(bill.getCreatedAt());
         ivStoreImage.setImageResource(R.drawable.store1);
@@ -62,11 +58,9 @@ public class BillHistoryAdapter extends ArrayAdapter<Bill> {
         String detail = "";
         List<BillDetails> billDetails = bill.getDetails();
 
-        FoodService foodService = new FoodService();
-
         for (int i = 0; i < billDetails.size(); i++) {
             detail += billDetails.get(i).getAmount() + " x ";
-            detail += foodService.getOne(billDetails.get(i).getFoodId()).getName() + " : ";
+            detail += billDetails.get(i).getFood().getName() + " : ";
             detail += billDetails.get(i).getPriceWithMoneyFormat() + "\n";
         }
 

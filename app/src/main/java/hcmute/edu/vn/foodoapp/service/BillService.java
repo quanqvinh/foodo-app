@@ -11,18 +11,22 @@ import java.util.List;
 import hcmute.edu.vn.foodoapp.database.DatabaseHelper;
 import hcmute.edu.vn.foodoapp.model.Bill;
 import hcmute.edu.vn.foodoapp.model.BillDetails;
+import hcmute.edu.vn.foodoapp.model.Store;
 
 public class BillService {
     SQLiteDatabase db;
     public List<BillDetails> getBillDetailsByBillId(Integer billId) {
         List<BillDetails> details = new ArrayList<>();
+        FoodService foodService;
         db = DatabaseHelper.getInstance().getReadableDatabase();
         Cursor cursor = db.rawQuery("select bd.id, bd.foodId, bd.billId, bd.amount, bd.price from bill_details bd " +
-                "join bills b on bd.id = b.detailsId " +
+                "join bills b on bd.billId = b.id " +
                 "where b.id = " + billId, null);
         while (cursor.moveToNext()){
             BillDetails aDetails = new BillDetails(cursor.getInt(0), cursor.getInt(1),
                     cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
+            foodService = new FoodService();
+            aDetails.setFood(foodService.getOne(cursor.getInt(1)));
             details.add(aDetails);
         }
         cursor.close();
@@ -32,12 +36,27 @@ public class BillService {
         db = DatabaseHelper.getInstance().getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from bills where id = " + billId, null);
         if (cursor.moveToNext()){
-            Bill b = new Bill(cursor.getInt(0), cursor.getInt(1), cursor.getString(2));
+            Bill b = new Bill(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getInt(4));
             b.setDetails(getBillDetailsByBillId(billId));
             return b;
         }
         cursor.close();
         return null;
+    }
+
+    public List<Bill> getByUserId(Integer userId) {
+        List<Bill> bills = new ArrayList<>();
+        db = DatabaseHelper.getInstance().getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from bills where userId="+userId, null);
+        while (cursor.moveToNext()){
+            Bill bill = new Bill(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                    cursor.getInt(3), cursor.getInt(4));
+            bill.setDetails(getBillDetailsByBillId(cursor.getInt(0)));
+            bills.add(bill);
+        }
+        cursor.close();
+        return bills;
     }
 
     public void insertBillWithDetails(Bill bill){
@@ -67,7 +86,21 @@ public class BillService {
         ContentValues values = new ContentValues();
         values.put("userId", bill.getUserId());
         values.put("createdAt", bill.getCreatedAt());
+        values.put("storeId", bill.getStoreId());
+        values.put("totalPrice", bill.getTotalPrice());
         return db.insert("bills", null, values);
+    }
+
+    public int calculateBillTotalPrice(Bill bill){
+        int total = 0;
+        for (BillDetails detail : bill.getDetails()) {
+            total += detail.getPrice();
+        }
+        return total;
+    }
+
+    public int calculateBillDetailsPrice(BillDetails details){
+        return details.getAmount() * details.getFood().getPrice();
     }
 
 }

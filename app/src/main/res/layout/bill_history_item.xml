@@ -6,17 +6,17 @@
     android:layout_height="wrap_content"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
+    android:paddingTop="10dp"
     android:background="@drawable/round_item_white">
     <TextView
         android:id="@+id/tvCreatedTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hôm qua 20:35"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textAlignment="textEnd"
-        android:paddingEnd="10dp"/>
+        android:paddingEnd="10dp"
+        android:textColor="@color/black"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,21 +38,24 @@
                 android:text="Gà Rán KFC"
                 android:textStyle="bold"
                 android:textSize="16dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/tvTotalPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="120.000 đ"
                 android:textStyle="bold"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chi tiết :"
                 android:textSize="12sp"
                 android:textStyle="italic"
-                android:paddingStart="10dp"/>
+                android:paddingStart="10dp"
+                android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/tvBillDetail"
                 android:layout_width="match_parent"
@@ -60,7 +63,8 @@
                 android:textStyle="italic"
                 android:textSize="12sp"
                 android:paddingStart="20dp"
-                android:text="2 x Gà rán 1 miếng : 36.000đ\n1 x Combo Gà Rán 1 : 49.000đ\n1 x Combo Gà Rán 2 : 85.000đ"/>
+                android:text="2 x Gà rán 1 miếng : 36.000đ\n1 x Combo Gà Rán 1 : 49.000đ\n1 x Combo Gà Rán 2 : 85.000đ"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

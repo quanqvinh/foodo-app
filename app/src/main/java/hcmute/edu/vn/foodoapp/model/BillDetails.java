@@ -7,6 +7,8 @@ public class BillDetails {
     private Integer amount;
     private Integer price;
 
+    private Food food;
+
     public BillDetails(Integer id, Integer foodId, Integer billId, int amount, int price) {
         this.id = id;
         this.foodId = foodId;
@@ -64,4 +66,21 @@ public class BillDetails {
             result = s.substring(0, i + 3) + result;
         return result.charAt(0) == '.' ? result.substring(1) : result;
     }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Food getFood() {
+        return food;
+    }
+
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
 }

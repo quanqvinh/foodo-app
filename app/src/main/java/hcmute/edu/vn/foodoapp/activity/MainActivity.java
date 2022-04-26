@@ -19,10 +19,17 @@ import hcmute.edu.vn.foodoapp.adapter.MainViewPagerAdapter;
 import hcmute.edu.vn.foodoapp.adapter.StoreAdapter;
 import hcmute.edu.vn.foodoapp.model.Food;
 import hcmute.edu.vn.foodoapp.model.Store;
+import hcmute.edu.vn.foodoapp.service.BillService;
 import hcmute.edu.vn.foodoapp.service.FoodService;
 import hcmute.edu.vn.foodoapp.service.StoreService;
+import hcmute.edu.vn.foodoapp.service.UserService;
 
 public class MainActivity extends AppCompatActivity {
+    final public static BillService billService = new BillService();
+    final public static FoodService foodService = new FoodService();
+    final public static StoreService storeService = new StoreService();
+    final public static UserService userService = new UserService();
+    public static int userId;
 
     ViewPager vpMain;
     TabLayout tlNavigation;
@@ -33,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+        userId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 1);
+
         vpMain = findViewById(R.id.vpMain);
         tlNavigation = findViewById(R.id.tlNavigation);
 
         vpMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT));
         tlNavigation.setupWithViewPager(vpMain);
     }
-
-
 }

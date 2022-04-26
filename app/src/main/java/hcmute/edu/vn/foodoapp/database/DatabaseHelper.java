@@ -53,7 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table if not exists bills (" +
                 "id integer primary key autoincrement, " +
                 "userId integer, " +
-                "createdAt varchar(200));");
+                "createdAt varchar(200), " +
+                "storeId integer, " +
+                "totalPrice integer);");
         db.execSQL("create table if not exists bill_details (" +
                 "id integer primary key autoincrement, " +
                 "foodId integer, " +

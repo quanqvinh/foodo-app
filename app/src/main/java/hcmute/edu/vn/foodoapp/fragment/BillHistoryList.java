@@ -9,10 +9,24 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
 
+import java.util.List;
+
+import hcmute.edu.vn.foodoapp.R;
+import hcmute.edu.vn.foodoapp.activity.MainActivity;
+import hcmute.edu.vn.foodoapp.adapter.BillHistoryAdapter;
+import hcmute.edu.vn.foodoapp.model.Bill;
+
 public class BillHistoryList extends ListFragment {
+    List<Bill> data;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+
+        data = MainActivity.billService.getByUserId(MainActivity.userId);
+
+        setListAdapter(new BillHistoryAdapter(getActivity(), R.layout.bill_history_item, data));
+
+        return inflater.inflate(R.layout.bill_history_list, container, false);
     }
 }
