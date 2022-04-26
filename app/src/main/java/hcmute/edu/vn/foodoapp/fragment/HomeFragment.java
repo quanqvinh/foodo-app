@@ -48,7 +48,6 @@ public class HomeFragment extends Fragment {
         lvStores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("Vinh", i + "");
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, dataStore.get(i));
                 startActivity(intent);
@@ -59,6 +58,17 @@ public class HomeFragment extends Fragment {
         FoodAdapter foodAdapter = new FoodAdapter(getActivity(), R.layout.food_item_layout, dataFood);
         lvFoods = (ListView) view.findViewById(R.id.lvFoods);
         lvFoods.setAdapter(foodAdapter);
+
+        lvFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Food food = dataFood.get(i);
+                Store store = MainActivity.storeService.getOne(food.getStoreId());
+                Intent intent = new Intent(getActivity(), StoreActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, dataStore.get(i));
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

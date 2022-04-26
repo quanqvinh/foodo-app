@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.NoActionBar">
         <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.StoreActivity"
             android:exported="false" />
         <activity
@@ -24,8 +27,7 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

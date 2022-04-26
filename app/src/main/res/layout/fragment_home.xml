@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
@@ -33,7 +33,6 @@
                 android:textColorHint="@color/gray"
                 android:textColor="@color/black"/>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,7 +165,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:text="Hiện thêm"
                 android:textAlignment="center"

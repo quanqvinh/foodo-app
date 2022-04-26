@@ -1,6 +1,8 @@
 package hcmute.edu.vn.foodoapp.model;
 
-public class BillDetails {
+import java.io.Serializable;
+
+public class BillDetails implements Serializable {
     private Integer id;
     private Integer foodId;
     private Integer billId;

@@ -1,9 +1,10 @@
 package hcmute.edu.vn.foodoapp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bill {
+public class Bill implements Serializable {
     private Integer id;
     private Integer userId;
     private String createdAt;
@@ -87,5 +88,16 @@ public class Bill {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getTotalPriceWithMoneyFormat() {
+        String s = this.totalPrice + "";
+        String result = " đ";
+        int i;
+        for (i = s.length() - 3; i > 0; i -= 3)
+            result = "." + s.substring(i, i + 3) + result;
+        if (i <= 0)
+            result = s.substring(0, i + 3) + result;
+        return result.charAt(0) == '.' ? result.substring(1) : result;
     }
 }
