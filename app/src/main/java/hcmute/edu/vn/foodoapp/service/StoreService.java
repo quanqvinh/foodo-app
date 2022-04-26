@@ -52,7 +52,7 @@ public class StoreService {
     public void insert(Store store){
         db = DatabaseHelper.getInstance().getWritableDatabase();
         Object[] bindArg = {store.getImage(), store.getName(), store.getOpenAt(),
-                store.getCloseAt(), store.getDescription()};
+                store.getCloseAt(), store.getAddress()};
         db.execSQL("insert into stores values (null, ?, ?, ?, ?, ?)", bindArg);
     }
 
