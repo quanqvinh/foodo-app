@@ -37,7 +37,7 @@ public class BillService {
         Cursor cursor = db.rawQuery("select * from bills where id = " + billId, null);
         if (cursor.moveToNext()){
             Bill b = new Bill(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
-                    cursor.getInt(3), cursor.getInt(4));
+                    cursor.getInt(3), cursor.getInt(4), cursor.getString(5));
             b.setDetails(getBillDetailsByBillId(billId));
             return b;
         }
@@ -51,7 +51,7 @@ public class BillService {
         Cursor cursor = db.rawQuery("select * from bills where userId="+userId, null);
         while (cursor.moveToNext()){
             Bill bill = new Bill(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
-                    cursor.getInt(3), cursor.getInt(4));
+                    cursor.getInt(3), cursor.getInt(4), cursor.getString(5));
             bill.setDetails(getBillDetailsByBillId(cursor.getInt(0)));
             bills.add(bill);
         }

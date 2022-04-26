@@ -1,5 +1,6 @@
 package hcmute.edu.vn.foodoapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,11 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
 
 import hcmute.edu.vn.foodoapp.R;
+import hcmute.edu.vn.foodoapp.activity.MainActivity;
+import hcmute.edu.vn.foodoapp.activity.StoreActivity;
 import hcmute.edu.vn.foodoapp.adapter.FoodAdapter;
 import hcmute.edu.vn.foodoapp.adapter.StoreAdapter;
 import hcmute.edu.vn.foodoapp.model.Food;

@@ -9,23 +9,27 @@ public class Bill {
     private String createdAt;
     private Integer storeId;
     private Integer totalPrice;
+    private String address;
 
     private List<BillDetails> details;
 
-    public Bill(Integer id, Integer userId, String createdAt, Integer storeId, Integer totalPrice) {
+    public Bill(Integer id, Integer userId, String createdAt, Integer storeId, Integer totalPrice, String address) {
         this.id = id;
         this.userId = userId;
         this.createdAt = createdAt;
         this.storeId = storeId;
         this.totalPrice = totalPrice;
+        this.address = address;
     }
 
-    public Bill(Integer id, Integer userId, String createdAt, Integer storeId, Integer totalPrice, List<BillDetails> details) {
+    public Bill(Integer id, Integer userId, String createdAt, Integer storeId,
+                Integer totalPrice, String address, List<BillDetails> details) {
         this.id = id;
         this.userId = userId;
         this.createdAt = createdAt;
         this.storeId = storeId;
         this.totalPrice = totalPrice;
+        this.address = address;
         this.details = details;
     }
 
@@ -77,5 +81,11 @@ public class Bill {
         this.details = details;
     }
 
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

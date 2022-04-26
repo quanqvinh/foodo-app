@@ -2,9 +2,11 @@ package hcmute.edu.vn.foodoapp.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,9 +16,10 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import hcmute.edu.vn.foodoapp.R;
+import hcmute.edu.vn.foodoapp.activity.StoreActivity;
 import hcmute.edu.vn.foodoapp.model.Store;
 
-public class StoreAdapter extends ArrayAdapter<Store> {
+public class StoreAdapter extends ArrayAdapter<Store> implements AdapterView.OnItemClickListener {
     Context context;
     int layoutId;
     List<Store> data;
@@ -27,6 +30,9 @@ public class StoreAdapter extends ArrayAdapter<Store> {
         this.layoutId = layoutId;
         this.data = data;
     }
+
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
@@ -42,5 +48,11 @@ public class StoreAdapter extends ArrayAdapter<Store> {
         txtStoreFoods.setText(store.getListFoods().length() == 0 ? "empty" : store.getListFoods());
 
         return convertView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(getContext(), StoreActivity.class);
+        context.startActivity(intent);
     }
 }
