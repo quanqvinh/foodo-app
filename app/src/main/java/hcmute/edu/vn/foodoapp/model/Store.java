@@ -7,25 +7,26 @@ public class Store {
     private int image;
     private String name;
     private String openAt, closeAt;
-    private String description;
+    private String address;
+
     private List<Food> foods;
 
-    public Store(Integer id, int image, String name, String openAt, String closeAt, String description, List<Food> foods) {
+    public Store(Integer id, int image, String name, String openAt, String closeAt, String address, List<Food> foods) {
         this.id = id;
         this.image = image;
         this.name = name;
         this.foods = foods;
         this.openAt = openAt;
         this.closeAt = closeAt;
-        this.description = description;
+        this.address = address;
     }
-    public Store(Integer id, int image, String name, String openAt, String closeAt, String description) {
+    public Store(Integer id, int image, String name, String openAt, String closeAt, String address) {
         this.id = id;
         this.image = image;
         this.name = name;
         this.openAt = openAt;
         this.closeAt = closeAt;
-        this.description = description;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -76,12 +77,12 @@ public class Store {
         this.closeAt = closeAt;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void addFood(Food food) {

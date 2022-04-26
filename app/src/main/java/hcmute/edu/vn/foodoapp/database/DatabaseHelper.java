@@ -55,7 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "userId integer, " +
                 "createdAt varchar(200), " +
                 "storeId integer, " +
-                "totalPrice integer);");
+                "totalPrice integer," +
+                "address varchar(200));");
         db.execSQL("create table if not exists bill_details (" +
                 "id integer primary key autoincrement, " +
                 "foodId integer, " +
@@ -68,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "name varchar(100), " +
                 "openAt varchar(100), " +
                 "closeAt varchar(100)," +
-                "description varchar(200));");
+                "address varchar(200));");
     }
 
     @Override
