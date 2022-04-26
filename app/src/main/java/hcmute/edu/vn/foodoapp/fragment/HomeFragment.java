@@ -5,11 +5,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ import hcmute.edu.vn.foodoapp.service.StoreService;
 
 public class HomeFragment extends Fragment {
 
+    final public static String EXTRA_MESSAGE = "Data tu anh Vinh phun so tec";
+
     ListView lvStores;
     ListView lvFoods;
     List<Store> dataStore;
@@ -36,14 +40,22 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        storeService = new StoreService();
-        dataStore = storeService.getAll();
+        dataStore = MainActivity.storeService.getAll();
         StoreAdapter storeAdapter = new StoreAdapter(getActivity(), R.layout.store_item_layout, dataStore);
         lvStores = (ListView) view.findViewById(R.id.lvStores);
         lvStores.setAdapter(storeAdapter);
 
-        foodService = new FoodService();
-        dataFood = foodService.getAll();
+        lvStores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Vinh", i + "");
+                Intent intent = new Intent(getActivity(), StoreActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, dataStore.get(i));
+                startActivity(intent);
+            }
+        });
+
+        dataFood = MainActivity.foodService.getAll();
         FoodAdapter foodAdapter = new FoodAdapter(getActivity(), R.layout.food_item_layout, dataFood);
         lvFoods = (ListView) view.findViewById(R.id.lvFoods);
         lvFoods.setAdapter(foodAdapter);

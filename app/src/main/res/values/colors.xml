@@ -13,6 +13,6 @@
     <color name="text_primary_color">#9C1318</color>
     <color name="darker_primary_color">#97171D</color>
     <color name="transparent">#0000</color>
-    <color name="item_color">#1ACD2027</color>
+    <color name="item_color">#0DCD2027</color>
     <color name="screen_background">#DCDCDC</color>
 </resources>

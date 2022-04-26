@@ -19,7 +19,7 @@ import hcmute.edu.vn.foodoapp.R;
 import hcmute.edu.vn.foodoapp.activity.StoreActivity;
 import hcmute.edu.vn.foodoapp.model.Store;
 
-public class StoreAdapter extends ArrayAdapter<Store> implements AdapterView.OnItemClickListener {
+public class StoreAdapter extends ArrayAdapter<Store> {
     Context context;
     int layoutId;
     List<Store> data;
@@ -48,11 +48,5 @@ public class StoreAdapter extends ArrayAdapter<Store> implements AdapterView.OnI
         txtStoreFoods.setText(store.getListFoods().length() == 0 ? "empty" : store.getListFoods());
 
         return convertView;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(getContext(), StoreActivity.class);
-        context.startActivity(intent);
     }
 }

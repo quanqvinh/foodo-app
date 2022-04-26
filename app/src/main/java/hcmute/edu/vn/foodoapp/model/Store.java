@@ -1,8 +1,9 @@
 package hcmute.edu.vn.foodoapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Store {
+public class Store implements Serializable {
     private Integer id;
     private int image;
     private String name;
