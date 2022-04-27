@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(this::loginHandler);
 
 //        createData();
+        testSearch();
 
 //        SQLiteDatabase dbRead = DatabaseHelper.getInstance().getReadableDatabase();
 //        Cursor cursor = dbRead.rawQuery("select b.id, bd.id from bills b join bill_details bd on b.id = bd.billId " +
@@ -56,6 +58,15 @@ public class LoginActivity extends AppCompatActivity {
 //            Log.d("ABCXYZ", cursor.getInt(0) + " " + cursor.getInt(1));
 //        }
 //        cursor.close();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void loginHandler(View view) {
@@ -123,5 +134,13 @@ public class LoginActivity extends AppCompatActivity {
         bill.setTotalPrice(billService.calculateBillTotalPrice(bill));
         billService.insertBillWithDetails(bill);
         db.close();
+    }
+
+    private void testSearch(){
+        FoodService foodService = new FoodService();
+        List<Food> foods = foodService.getByKeyword("Combo");
+        for (Food f:foods) {
+            Log.d("ABCXYZ", f.getName());
+        }
     }
 }

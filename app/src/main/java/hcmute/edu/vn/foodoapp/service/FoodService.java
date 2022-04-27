@@ -57,4 +57,15 @@ public class FoodService {
             return cursor.getInt(0);
         return 0;
     }
+    public List<Food> getByKeyword(String keyword) {
+        List<Food> result = new ArrayList<>();
+        db = DatabaseHelper.getInstance().getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from foods where name like '%"+keyword+"%';", null);
+        while (cursor.moveToNext()){
+            Food f = new Food(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getInt(5), cursor.getInt(6));
+            result.add(f);
+        }
+        return result;
+    }
 }

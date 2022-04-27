@@ -35,4 +35,10 @@ public class UserService {
         Object[] bindArgs = {user.getUsername(), user.getPassword(), user.getAddress(), user.getPhone()};
         db.execSQL("insert into users values (null, ?, ?, ?, ?)", bindArgs);
     }
+    public void update(User user) {
+        db = DatabaseHelper.getInstance().getWritableDatabase();
+        Object[] bindArgs = {user.getPassword(), user.getAddress(), user.getPhone(), user.getId()};
+        db.execSQL("update  users set password=?, address=?, phone=? " +
+                "where id=?;", bindArgs);
+    }
 }
