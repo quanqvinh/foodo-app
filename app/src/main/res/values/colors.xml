@@ -15,4 +15,5 @@
     <color name="transparent">#0000</color>
     <color name="item_color">#0DCD2027</color>
     <color name="screen_background">#DCDCDC</color>
+    <color name="disabled">#BFB8B8</color>
 </resources>

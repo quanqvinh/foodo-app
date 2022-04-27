@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -72,7 +73,44 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp">
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Tên người dùng:"
+                    android:textColor="@color/text_primary_color"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvUsernameProfile"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvUsernameProfile"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@color/disabled"
+                    android:text="Aaaaaaaaa"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -80,54 +118,37 @@
                 android:weightSum="1"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
+
                 <TextView
+                    android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên người dùng:"
-                    android:textSize="20sp"
+                    android:layout_weight="0.5"
+                    android:text="Mật khẩu:"
                     android:textColor="@color/text_primary_color"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.1"/>
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/etPasswordProfile"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/etUsernameProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="0.9"
-                    android:textColor="@color/black"
-                    android:text="Aaaaaaaaa" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:weightSum="1">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mật khẩu:"
-                    android:textSize="20sp"
-                    android:textColor="@color/text_primary_color"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.1"/>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"/>
-                <EditText
                     android:id="@+id/etPasswordProfile"
-                    android:layout_width="wrap_content"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:layout_marginLeft="18dp"
-                    android:textColor="@color/black"
+                    android:layout_weight="0.5"
+                    android:inputType="textPassword"
                     android:text="Aaaaaaaaa"
-                    android:textSize="30sp"
-                    android:inputType="textPassword"/>
-            </LinearLayout>
-            <LinearLayout
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:focusableInTouchMode="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView1"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -135,28 +156,36 @@
                 android:weightSum="1"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
+
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:text="Địa chỉ:"
-                    android:textSize="20sp"
                     android:textColor="@color/text_primary_color"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.1"/>
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"/>
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/etAddressProfile"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <EditText
                     android:id="@+id/etAddressProfile"
-                    android:layout_width="wrap_content"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:layout_marginLeft="40dp"
+                    android:layout_weight="0.5"
+                    android:text="Aaaaaaaaa"
                     android:textColor="@color/black"
-                    android:text="Aaaaaaaaa"/>
-            </LinearLayout>
-            <LinearLayout
+                    android:textSize="18sp"
+                    android:focusableInTouchMode="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -164,23 +193,36 @@
                 android:weightSum="1"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp">
+
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số điện thoại:"
-                    android:textSize="20sp"
+                    android:layout_weight="0.5"
+                    android:text="Điện thoại:"
                     android:textColor="@color/text_primary_color"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.1"/>
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/etPhoneProfile"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <EditText
                     android:id="@+id/etPhoneProfile"
-                    android:layout_width="wrap_content"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.9"
-                    android:layout_marginLeft="22dp"
+                    android:layout_weight="0.5"
+                    android:text="Aaaaaaaaa"
                     android:textColor="@color/black"
-                    android:text="Aaaaaaaaa"/>
-            </LinearLayout>
+                    android:textSize="18sp"
+                    android:focusableInTouchMode="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         </LinearLayout>

@@ -56,4 +56,18 @@ public class StoreService {
         db.execSQL("insert into stores values (null, ?, ?, ?, ?, ?)", bindArg);
     }
 
+    public List<Store> getByKeyword(String keyword) {
+        List<Store> result = new ArrayList<>();
+        db = DatabaseHelper.getInstance().getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from stores where name like '%"+keyword+"%';", null);
+        while (cursor.moveToNext()){
+            foodService = new FoodService();
+            List<Food> listFood = foodService.getByStoreId(cursor.getInt(0));
+            Store s = new Store(cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getString(5), listFood);
+            result.add(s);
+        }
+        return result;
+    }
+
 }
