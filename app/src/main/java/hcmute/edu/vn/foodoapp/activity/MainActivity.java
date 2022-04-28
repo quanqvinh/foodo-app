@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        userId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 1);
+        userId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 2);
 
         vpMain = findViewById(R.id.vpMain);
         tlNavigation = findViewById(R.id.tlNavigation);
