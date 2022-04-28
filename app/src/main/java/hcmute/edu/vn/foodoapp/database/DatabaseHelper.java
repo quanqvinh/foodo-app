@@ -17,7 +17,7 @@ import hcmute.edu.vn.foodoapp.activity.LoginActivity;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static String DB_PATH = "/data/data/hcmute.edu.vn.foodoapp/databases/";
-    private static final String DB_NAME = "foodo.db";
+    private static final String DB_NAME = "foodo.sqlite";
     private static final int DB_VERSION = 1;
     private static DatabaseHelper instance = null;
     private static final Context context = MyApplication.getContext();

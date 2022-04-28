@@ -23,7 +23,9 @@
             android:text="Tên món"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
 
         <LinearLayout
             android:layout_width="match_parent"

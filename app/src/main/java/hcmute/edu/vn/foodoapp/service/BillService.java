@@ -88,6 +88,7 @@ public class BillService {
         values.put("createdAt", bill.getCreatedAt());
         values.put("storeId", bill.getStoreId());
         values.put("totalPrice", bill.getTotalPrice());
+        values.put("address", bill.getAddress());
         return db.insert("bills", null, values);
     }
 

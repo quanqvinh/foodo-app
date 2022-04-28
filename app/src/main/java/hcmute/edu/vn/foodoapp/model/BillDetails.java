@@ -64,7 +64,7 @@ public class BillDetails implements Serializable {
         int i;
         for (i = s.length() - 3; i > 0; i -= 3)
             result = "." + s.substring(i, i + 3) + result;
-        if (i < 0)
+        if (i <= 0)
             result = s.substring(0, i + 3) + result;
         return result.charAt(0) == '.' ? result.substring(1) : result;
     }

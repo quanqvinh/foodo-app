@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import hcmute.edu.vn.foodoapp.activity.MainActivity;
 import hcmute.edu.vn.foodoapp.model.Bill;
 import hcmute.edu.vn.foodoapp.model.BillDetails;
 
@@ -46,7 +47,7 @@ public class BillHistoryAdapter extends ArrayAdapter<Bill> {
 
 
         tvCreatedTime.setText(bill.getCreatedAt());
-        ivStoreImage.setImageResource(R.drawable.store1);
+        ivStoreImage.setImageResource(MainActivity.storeService.getOne(bill.getStoreId()).getImage());
         tvStoreName.setText("Gà rán KFC");
         tvTotalPrice.setText("120.000 đ");
         tvBillDetail.setText(getBillDetail(bill));
