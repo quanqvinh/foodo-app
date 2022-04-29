@@ -42,6 +42,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         TextView tvFoodName = (TextView) convertView.findViewById(R.id.tvFoodItemName);
         TextView tvDescription = (TextView) convertView.findViewById(R.id.tvDescription);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.tvPrice);
+
         Food food = data.get(position);
 
         ivFoodImage.setImageResource(food.getImage());

@@ -50,7 +50,7 @@ public class CartActivity extends AppCompatActivity {
         bill = (Bill) getIntent().getSerializableExtra(StoreActivity.MESSAGE);
         lvFoodInCart.setAdapter(new BillDetailAdapter(this, R.layout.bill_detail_item, bill.getDetails()));
 
-        setData();
+//        setData();
     }
 
     private void setData() {

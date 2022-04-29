@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this::loginHandler);
 
-//        createData();
+        createData();
 //        testSearch();
 
 //        SQLiteDatabase dbRead = DatabaseHelper.getInstance().getReadableDatabase();

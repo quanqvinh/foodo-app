@@ -51,15 +51,14 @@ public class StoreActivity extends AppCompatActivity {
         setInformation(store);
         lvStoreFood.setAdapter(new FoodAdapter(this, R.layout.store_food_item_layout, store.getFoods()));
 
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StoreActivity.this, CartActivity.class);
-                Bill bill = fakeData();
-                intent.putExtra(MESSAGE, bill);
-                startActivity(intent);
-            }
-        });
+        btnCheckout.setOnClickListener(this::checkoutHandler);
+    }
+
+    private void checkoutHandler(View view){
+        Intent intent = new Intent(StoreActivity.this, CartActivity.class);
+        Bill bill = fakeData();
+        intent.putExtra(MESSAGE, bill);
+        startActivity(intent);
     }
 
     private void setInformation(Store store) {
