@@ -1,15 +1,18 @@
 package hcmute.edu.vn.foodoapp.fragment;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,6 +46,7 @@ public class HomeFragment extends Fragment {
         StoreAdapter storeAdapter = new StoreAdapter(getActivity(), R.layout.store_item_layout, dataStore);
         lvStores = (ListView) view.findViewById(R.id.lvStores);
         lvStores.setAdapter(storeAdapter);
+        expandListView(lvStores);
 
         lvStores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -53,10 +57,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         dataFood = MainActivity.foodService.getAll();
         FoodAdapter foodAdapter = new FoodAdapter(getActivity(), R.layout.food_item_layout, dataFood);
         lvFoods = view.findViewById(R.id.lvFoods);
         lvFoods.setAdapter(foodAdapter);
+        expandListView(lvFoods);
 
         lvFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -70,5 +76,22 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void expandListView(ListView lv) {
+        ListAdapter adapter = lv.getAdapter();
+        if (adapter.getCount() == 0)
+            return;
+
+        int height = lv.getPaddingBottom() + lv.getPaddingTop();
+        View item = adapter.getView(0, null, lv);
+        item.measure(0, 0);
+        height += adapter.getCount() * (item.getMeasuredHeight() * 0.88);
+
+        height += lv.getDividerHeight() * (adapter.getCount() - 1);
+
+        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+        int heightDp = Math.round(height / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        lv.getLayoutParams().height = heightDp;
     }
 }

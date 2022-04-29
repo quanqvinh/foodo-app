@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/cart_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/food_item_layout.xml" value="0.12962962962962962" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/home_activity.xml" value="0.264" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/login_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/main_activity.xml" value="0.16614583333333333" />
+        <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/store_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/store_food_item_layout.xml" value="0.16614583333333333" />
         <entry key="..\:/OneDrive - hcmute.edu.vn/CODING/ANDROID/Foodo_Project/foodo-app/app/src/main/res/layout/store_item_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/drawable-hdpi/round_input_shape.xml" value="0.114" />
@@ -19,6 +21,7 @@
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/bill_detail_item.xml" value="0.23229166666666667" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/bill_history_item.xml" value="0.23229166666666667" />
+        <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/cart_activity.xml" value="0.4" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/food_item_layout.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/fragment_history.xml" value="0.23229166666666667" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
@@ -27,7 +30,7 @@
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/login_activity.xml" value="0.264" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/main_activity.xml" value="0.23229166666666667" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/search_activity.xml" value="0.23229166666666667" />
-        <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/store_activity.xml" value="0.264" />
+        <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/store_activity.xml" value="0.47923875432525953" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/store_food_item_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/Workspace/AndroidApp/FoodoApp/app/src/main/res/layout/store_item_layout.xml" value="0.4" />
       </map>

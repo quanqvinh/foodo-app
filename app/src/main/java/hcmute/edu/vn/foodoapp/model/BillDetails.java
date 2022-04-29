@@ -85,4 +85,5 @@ public class BillDetails implements Serializable {
         this.food = food;
     }
 
+    public void addAmount() { this.amount++; }
 }

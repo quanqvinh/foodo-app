@@ -8,19 +8,29 @@ import hcmute.edu.vn.foodoapp.model.BillDetails;
 import hcmute.edu.vn.foodoapp.model.Store;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class StoreActivity extends AppCompatActivity {
 
@@ -32,8 +42,13 @@ public class StoreActivity extends AppCompatActivity {
     TextView tvOpenedTime;
     ListView lvStoreFood;
     Button btnCheckout;
+    public TextView amountInCart;
+    public TextView tvTotalBill;
+    public ConstraintLayout clCart;
 
     Store store;
+    public Bill bill;
+    public List<BillDetails> listFoods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +61,33 @@ public class StoreActivity extends AppCompatActivity {
         tvOpenedTime = findViewById(R.id.tvOpenedTime);
         lvStoreFood = findViewById(R.id.lvStoreFood);
         btnCheckout = findViewById(R.id.btnCheckOut);
+        amountInCart = findViewById(R.id.amountInCart);
+        tvTotalBill = findViewById(R.id.tvTotalBill);
+        clCart = findViewById(R.id.clCart);
+        clCart.getLayoutParams().height = 1;
 
         store = (Store) getIntent().getSerializableExtra(HomeFragment.EXTRA_MESSAGE);
+        bill = new Bill(null, MainActivity.userId, "", store.getId(), 0, MainActivity.userService.getOne(MainActivity.userId).getAddress());
+        listFoods = new ArrayList<BillDetails>();
 
         setInformation(store);
-//        Log.d("Vinh", store.getFoods() == null ? "NULL" : "OK");
         lvStoreFood.setAdapter(new FoodAdapter(this, R.layout.store_food_item_layout, store.getFoods()));
+        expandListView(lvStoreFood);
 
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StoreActivity.this, CartActivity.class);
-                Bill bill = fakeData();
-                intent.putExtra(MESSAGE, bill);
-                startActivity(intent);
-            }
-        });
+        btnCheckout.setOnClickListener(this::checkoutHandler);
+    }
+
+    private void checkoutHandler(View view){
+        Intent intent = new Intent(StoreActivity.this, CartActivity.class);
+//        bill = fakeData();
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("hh:mmaa MM/dd/yyyy");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Saigon"));
+        String strDate = dateFormat.format(date);
+        bill.setCreatedAt(strDate);
+        bill.setDetails(listFoods);
+        intent.putExtra(MESSAGE, bill);
+        startActivity(intent);
     }
 
     private void setInformation(Store store) {
@@ -69,6 +95,8 @@ public class StoreActivity extends AppCompatActivity {
         tvStoreName.setText(store.getName());
         tvStoreAddress.setText(store.getAddress());
         tvOpenedTime.setText(store.getOpenAt() + " - " + store.getCloseAt());
+        amountInCart.setText("0");
+        tvTotalBill.setText("0đ");
     }
 
     private Bill fakeData() {
@@ -80,5 +108,22 @@ public class StoreActivity extends AppCompatActivity {
 
         bill.setDetails(billDetails);
         return bill;
+    }
+
+    public void expandListView(ListView lv) {
+        ListAdapter adapter = lv.getAdapter();
+        if (adapter.getCount() == 0)
+            return;
+
+        int height = lv.getPaddingBottom() + lv.getPaddingTop();
+        View item = adapter.getView(0, null, lv);
+        item.measure(0, 0);
+        height += adapter.getCount() * (item.getMeasuredHeight() * 0.8);
+
+        height += lv.getDividerHeight() * (adapter.getCount() - 1);
+
+        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
+        height = Math.round(height / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        lv.getLayoutParams().height = height;
     }
 }
