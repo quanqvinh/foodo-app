@@ -66,6 +66,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
+            android:id="@+id/btnAddToCart"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/add_icon"

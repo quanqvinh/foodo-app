@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ public class StoreActivity extends AppCompatActivity {
         store = (Store) getIntent().getSerializableExtra(HomeFragment.EXTRA_MESSAGE);
 
         setInformation(store);
+//        Log.d("Vinh", store.getFoods() == null ? "NULL" : "OK");
         lvStoreFood.setAdapter(new FoodAdapter(this, R.layout.store_food_item_layout, store.getFoods()));
 
         btnCheckout.setOnClickListener(new View.OnClickListener() {

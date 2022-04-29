@@ -1,13 +1,16 @@
 package hcmute.edu.vn.foodoapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +21,8 @@ import java.time.Instant;
 import java.util.List;
 
 import hcmute.edu.vn.foodoapp.R;
+import hcmute.edu.vn.foodoapp.activity.SearchActivity;
+import hcmute.edu.vn.foodoapp.activity.StoreActivity;
 import hcmute.edu.vn.foodoapp.model.Food;
 
 public class FoodAdapter extends ArrayAdapter<Food> {
@@ -42,12 +47,21 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         TextView tvFoodName = (TextView) convertView.findViewById(R.id.tvFoodItemName);
         TextView tvDescription = (TextView) convertView.findViewById(R.id.tvDescription);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.tvPrice);
+        ImageButton btnAddToCart = convertView.findViewById(R.id.btnAddToCart);
         Food food = data.get(position);
 
         ivFoodImage.setImageResource(food.getImage());
         tvFoodName.setText(food.getName());
         tvDescription.setText(food.getDescription());
         tvPrice.setText(food.getPriceWithMoneyFormat());
+
+        if (btnAddToCart != null)
+            btnAddToCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
+                }
+            });
 
         return convertView;
     }

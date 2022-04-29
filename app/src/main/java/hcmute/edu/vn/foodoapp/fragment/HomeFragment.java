@@ -33,8 +33,7 @@ public class HomeFragment extends Fragment {
     ListView lvFoods;
     List<Store> dataStore;
     List<Food> dataFood;
-    StoreService storeService;
-    FoodService foodService;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,16 +55,16 @@ public class HomeFragment extends Fragment {
 
         dataFood = MainActivity.foodService.getAll();
         FoodAdapter foodAdapter = new FoodAdapter(getActivity(), R.layout.food_item_layout, dataFood);
-        lvFoods = (ListView) view.findViewById(R.id.lvFoods);
+        lvFoods = view.findViewById(R.id.lvFoods);
         lvFoods.setAdapter(foodAdapter);
 
         lvFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Food food = dataFood.get(i);
-                Store store = MainActivity.storeService.getOne(food.getStoreId());
+                Store store = MainActivity.storeService.getOne(dataFood.get(i).getStoreId());
+                Log.d("Vinh", store.getFoods() == null ? "NULL" : "OK");
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, dataStore.get(i));
+                intent.putExtra(EXTRA_MESSAGE, store);
                 startActivity(intent);
             }
         });

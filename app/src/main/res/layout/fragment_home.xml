@@ -16,27 +16,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:background="@color/darker_primary_color"
-            android:padding="10dp">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/round_input_shape"
-                android:drawableRight="@drawable/search_icon"
-                android:fontFamily="@font/nunito_sans"
-                android:hint="Tìm kiếm món ăn, tên địa điểm, địa chỉ ..."
-                android:paddingStart="10dp"
-                android:paddingEnd="5dp"
-                android:textSize="16sp"
-                android:textColorHint="@color/gray"
-                android:textColor="@color/black"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_margin="5dp"

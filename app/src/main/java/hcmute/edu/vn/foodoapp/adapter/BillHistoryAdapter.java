@@ -48,8 +48,8 @@ public class BillHistoryAdapter extends ArrayAdapter<Bill> {
 
         tvCreatedTime.setText(bill.getCreatedAt());
         ivStoreImage.setImageResource(MainActivity.storeService.getOne(bill.getStoreId()).getImage());
-        tvStoreName.setText("Gà rán KFC");
-        tvTotalPrice.setText("120.000 đ");
+        tvStoreName.setText(MainActivity.storeService.getOne(bill.getStoreId()).getName());
+        tvTotalPrice.setText(bill.getTotalPriceWithMoneyFormat());
         tvBillDetail.setText(getBillDetail(bill));
 
         return convertView;

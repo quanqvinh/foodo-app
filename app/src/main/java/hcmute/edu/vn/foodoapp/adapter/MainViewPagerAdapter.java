@@ -1,14 +1,18 @@
 package hcmute.edu.vn.foodoapp.adapter;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import hcmute.edu.vn.foodoapp.activity.MainActivity;
 import hcmute.edu.vn.foodoapp.fragment.HistoryFragment;
 import hcmute.edu.vn.foodoapp.fragment.HomeFragment;
 import hcmute.edu.vn.foodoapp.fragment.ProfileFragment;
+import hcmute.edu.vn.foodoapp.fragment.SearchResultList;
 
 public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
     public MainViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -50,4 +54,5 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         return title;
     }
+
 }
