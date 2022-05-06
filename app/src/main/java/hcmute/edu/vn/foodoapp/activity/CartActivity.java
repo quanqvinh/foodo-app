@@ -9,12 +9,14 @@ import hcmute.edu.vn.foodoapp.model.User;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class CartActivity extends AppCompatActivity {
     TextView tvShippingCost;
     TextView tvTotalPrice;
     Button btnCheckout;
+    BillDetailAdapter billDetailAdapter;
 
     Bill bill;
 
@@ -53,7 +56,10 @@ public class CartActivity extends AppCompatActivity {
         lvFoodInCart = findViewById(R.id.lvFoodInCart);
 
         bill = (Bill) getIntent().getSerializableExtra(StoreActivity.MESSAGE);
-        lvFoodInCart.setAdapter(new BillDetailAdapter(this, R.layout.bill_detail_item, bill.getDetails()));
+        billDetailAdapter = new BillDetailAdapter(this, R.layout.bill_detail_item, bill.getDetails());
+        lvFoodInCart.setAdapter(billDetailAdapter);
+        billDetailAdapter.notifyDataSetChanged();
+
 
         setData();
 
@@ -62,6 +68,18 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 bill.setTotalPrice(bill.getTotalPrice() + shippingCost);
                 MainActivity.billService.insertBillWithDetails(bill);
+
+                Toast.makeText(getApplicationContext(), "Đặt đơn thành công!", Toast.LENGTH_SHORT)
+                        .show();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                int currentUserId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 1);
+                intent.putExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, currentUserId);
+                startActivity(intent);
             }
         });
     }

@@ -48,6 +48,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this::loginHandler);
 
+//        FoodService foodService = new FoodService();
+//        List<Food> foods = foodService.getByStoreId(4);
+//        for (Food f : foods) {
+//            Log.d("ALO", f.getName());
+//        }
 //        createData();
 //        testSearch();
 

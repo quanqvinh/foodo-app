@@ -25,7 +25,9 @@ public class BillHistoryList extends ListFragment {
 
         data = MainActivity.billService.getByUserId(MainActivity.userId);
 
-        setListAdapter(new BillHistoryAdapter(getActivity(), R.layout.bill_history_item, data));
+        BillHistoryAdapter billHistoryAdapter = new BillHistoryAdapter(getActivity(), R.layout.bill_history_item, data);
+        setListAdapter(billHistoryAdapter);
+        billHistoryAdapter.notifyDataSetChanged();
 
         return inflater.inflate(R.layout.bill_history_list, container, false);
     }

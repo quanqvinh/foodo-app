@@ -5,6 +5,7 @@ import hcmute.edu.vn.foodoapp.adapter.FoodAdapter;
 import hcmute.edu.vn.foodoapp.fragment.HomeFragment;
 import hcmute.edu.vn.foodoapp.model.Bill;
 import hcmute.edu.vn.foodoapp.model.BillDetails;
+import hcmute.edu.vn.foodoapp.model.Food;
 import hcmute.edu.vn.foodoapp.model.Store;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,6 +76,12 @@ public class StoreActivity extends AppCompatActivity {
         expandListView(lvStoreFood);
 
         btnCheckout.setOnClickListener(this::checkoutHandler);
+
+        List<Food> listFoods = store.getFoods();
+        for (Food f:listFoods) {
+            Log.d("ALO", f.getName());
+        }
+
     }
 
     private void checkoutHandler(View view){
@@ -99,16 +106,16 @@ public class StoreActivity extends AppCompatActivity {
         tvTotalBill.setText("0đ");
     }
 
-    private Bill fakeData() {
-        Bill bill = new Bill(2, 1, "27/04/2022 06:11 AM", 1, 124000, "Ở đâu đó");
-
-        List<BillDetails> billDetails = new ArrayList<BillDetails>();
-        billDetails.add(new BillDetails(1, 1, 2, 2, 64000));
-        billDetails.add(new BillDetails(2, 2, 2, 1, 45000));
-
-        bill.setDetails(billDetails);
-        return bill;
-    }
+//    private Bill fakeData() {
+//        Bill bill = new Bill(2, 1, "27/04/2022 06:11 AM", 1, 124000, "Ở đâu đó");
+//
+//        List<BillDetails> billDetails = new ArrayList<BillDetails>();
+//        billDetails.add(new BillDetails(1, 1, 2, 2, 64000));
+//        billDetails.add(new BillDetails(2, 2, 2, 1, 45000));
+//
+//        bill.setDetails(billDetails);
+//        return bill;
+//    }
 
     public void expandListView(ListView lv) {
         ListAdapter adapter = lv.getAdapter();
