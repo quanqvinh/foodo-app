@@ -68,14 +68,9 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 bill.setTotalPrice(bill.getTotalPrice() + shippingCost);
                 MainActivity.billService.insertBillWithDetails(bill);
-
                 Toast.makeText(getApplicationContext(), "Đặt đơn thành công!", Toast.LENGTH_SHORT)
                         .show();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 int currentUserId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 1);
                 intent.putExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, currentUserId);

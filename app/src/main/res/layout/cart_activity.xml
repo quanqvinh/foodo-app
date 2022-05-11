@@ -40,14 +40,14 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <Button
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="Thay đổi"
-                    android:textAllCaps="false"
-                    android:textColor="@color/darker_primary_color" />
+<!--                <Button-->
+<!--                    style="@style/Widget.MaterialComponents.Button.TextButton"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Thay đổi"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/darker_primary_color" />-->
             </LinearLayout>
 
             <EditText

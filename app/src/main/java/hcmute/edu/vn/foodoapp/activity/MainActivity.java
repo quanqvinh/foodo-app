@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        Log.d("Vinh", R.drawable.domino + "");
+//        Log.d("Vinh", R.drawable.domino + "");
 
         userId = getIntent().getIntExtra(LoginActivity.USERID_AUTHENTICATED_MESSAGE, 2);
 
